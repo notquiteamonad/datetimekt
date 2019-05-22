@@ -33,6 +33,15 @@ class Time private constructor(
         return String.format("%02d:%02d:%02d", h, m, s)
     }
 
+    /**
+     * Produces a string such as 08:30 for 8 hours and 30 minutes.
+     *
+     * Ignores seconds.
+     */
+    fun toHHMMString(): String {
+        return String.format("%02d:%02d", h, m)
+    }
+
     companion object {
 
         /**

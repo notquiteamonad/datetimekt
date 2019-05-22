@@ -26,6 +26,7 @@ class TimeTests: StringSpec ({
     "times to strings" {
         val time = Time.new(3, 0, 39)
         time.toString() shouldBe "03:00:39"
+        time.toHHMMString() shouldBe "03:00"
     }
 
     "times from seconds" {
@@ -37,7 +38,6 @@ class TimeTests: StringSpec ({
         }
     }
 
-    //todo tohhmmstring
     //todo + -
     //todo < > <= >=
     //todo toSeconds
