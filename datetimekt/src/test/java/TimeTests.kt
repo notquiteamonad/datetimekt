@@ -86,7 +86,6 @@ class TimeTests: StringSpec ({
         time3 shouldBe Time.new(22, 58, 59)
     }
 
-    //todo fromString
     //todo add/subtractSeconds
     //todo add/subtractMinutes
     //todo add/subtractHours
