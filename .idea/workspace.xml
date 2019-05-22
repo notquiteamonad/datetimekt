@@ -25,13 +25,13 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/datetimekt/src/main/java/Time.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="414">
-              <caret line="38" column="23" selection-start-line="38" selection-start-column="23" selection-end-line="38" selection-end-column="23" />
+            <state relative-caret-position="644">
+              <caret line="110" column="76" selection-start-line="110" selection-start-column="76" selection-end-line="110" selection-end-column="76" />
               <folding>
-                <element signature="e#0#130#0" expanded="true" />
+                <element signature="e#0#161#0" expanded="true" />
                 <element signature="n#!!block;n#equals#0;n#!!block;n#Time#0" />
                 <element signature="n#!!block;n#hashCode#0;n#!!block;n#Time#0" />
                 <element signature="n#!!block;n#toString#0;n#!!block;n#Time#0" />
@@ -49,11 +49,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/datetimekt/src/test/java/TimeTests.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="450">
-              <caret line="75" column="37" selection-start-line="75" selection-start-column="37" selection-end-line="75" selection-end-column="37" />
+            <state relative-caret-position="428">
+              <caret line="35" column="28" selection-start-line="35" selection-start-column="28" selection-end-line="35" selection-end-column="28" />
               <folding>
                 <element signature="e#0#173#0" expanded="true" />
               </folding>
@@ -81,8 +81,8 @@
         <option value="$PROJECT_DIR$/src/Time.kt" />
         <option value="$PROJECT_DIR$/datetimekt/pom.xml" />
         <option value="$PROJECT_DIR$/datetimekt/src/main/java/Consts.kt" />
-        <option value="$PROJECT_DIR$/datetimekt/src/test/java/TimeTests.kt" />
         <option value="$PROJECT_DIR$/datetimekt/src/main/java/Time.kt" />
+        <option value="$PROJECT_DIR$/datetimekt/src/test/java/TimeTests.kt" />
       </list>
     </option>
   </component>
@@ -219,7 +219,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1920" height="1026" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.17807487" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -268,25 +267,25 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/datetimekt/src/test/java/TimeTests.kt">
+    <entry file="file://$PROJECT_DIR$/datetimekt/src/main/java/Time.kt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="450">
-          <caret line="75" column="37" selection-start-line="75" selection-start-column="37" selection-end-line="75" selection-end-column="37" />
+        <state relative-caret-position="644">
+          <caret line="110" column="76" selection-start-line="110" selection-start-column="76" selection-end-line="110" selection-end-column="76" />
           <folding>
-            <element signature="e#0#173#0" expanded="true" />
+            <element signature="e#0#161#0" expanded="true" />
+            <element signature="n#!!block;n#equals#0;n#!!block;n#Time#0" />
+            <element signature="n#!!block;n#hashCode#0;n#!!block;n#Time#0" />
+            <element signature="n#!!block;n#toString#0;n#!!block;n#Time#0" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/datetimekt/src/main/java/Time.kt">
+    <entry file="file://$PROJECT_DIR$/datetimekt/src/test/java/TimeTests.kt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="414">
-          <caret line="38" column="23" selection-start-line="38" selection-start-column="23" selection-end-line="38" selection-end-column="23" />
+        <state relative-caret-position="428">
+          <caret line="35" column="28" selection-start-line="35" selection-start-column="28" selection-end-line="35" selection-end-column="28" />
           <folding>
-            <element signature="e#0#130#0" expanded="true" />
-            <element signature="n#!!block;n#equals#0;n#!!block;n#Time#0" />
-            <element signature="n#!!block;n#hashCode#0;n#!!block;n#Time#0" />
-            <element signature="n#!!block;n#toString#0;n#!!block;n#Time#0" />
+            <element signature="e#0#173#0" expanded="true" />
           </folding>
         </state>
       </provider>
