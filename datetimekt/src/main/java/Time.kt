@@ -3,11 +3,11 @@ import Consts.SECONDS_IN_A_MINUTE
 import Consts.SECONDS_IN_AN_HOUR
 import Consts.SECONDS_IN_A_DAY
 
-class Time private constructor(
+class Time private constructor (
     private var h: Int,
     private var m: Int,
     private var s: Int
-){
+): Comparable<Time> {
 
     fun getHours(): Int = h
     fun getMinutes(): Int = m
@@ -33,6 +33,8 @@ class Time private constructor(
     override fun toString(): String {
         return String.format("%02d:%02d:%02d", h, m, s)
     }
+
+    override fun compareTo(other: Time): Int = this.toSeconds().compareTo(other.toSeconds())
 
     /**
      * Produces a string such as 08:30 for 8 hours and 30 minutes.
