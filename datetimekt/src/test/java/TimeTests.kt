@@ -1,4 +1,5 @@
 import io.kotlintest.data.forall
+import io.kotlintest.properties.forAll
 import io.kotlintest.shouldBe
 import io.kotlintest.specs.StringSpec
 import io.kotlintest.tables.row
@@ -56,8 +57,19 @@ class TimeTests: StringSpec ({
         }
     }
 
+    "time comparisons" {
+        val time1 = Time.new(0, 0, 0)
+        val time2 = Time.new(1, 1, 1)
+        val time3 = Time.new(2, 2, 2)
+        assert(time1 < time2)
+        assert(time1 <= time2)
+        assert(time2 <= time2)
+        assert(time2 < time3)
+        assert(time1 < time3)
+        assert(time1 <= time3)
+    }
+
     //todo + -
-    //todo < > <= >=
     //todo fromString
     //todo add/subtractSeconds
     //todo add/subtractMinutes
