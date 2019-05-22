@@ -35,12 +35,27 @@ class Time private constructor(
 
     companion object {
 
+        /**
+         * Produces a new Time.
+         *
+         * Times of 24 hours or greater and negative times
+         * will wrap around 24 hours to always produce a positive time.
+         *
+         * The value is calculated from total number of seconds so a time
+         * with a minute value of 90 would add an hour to the resulting time
+         * and set the minutes to 30, for example.
+         */
         @JvmStatic
         fun new(h: Int, m: Int, s: Int): Time {
             val totalSeconds = s + SECONDS_IN_A_MINUTE * m + SECONDS_IN_AN_HOUR * h
             return fromSeconds(totalSeconds)
         }
 
+        /**
+        * Same as `TimeTuple::new()` but takes the total number of seconds
+        * as its argument and calculates the hours, minutes, and seconds
+        * from that.
+        */
         @JvmStatic
         @Suppress("MemberVisibilityCanBePrivate")
         fun fromSeconds(totalSeconds: Int): Time {
