@@ -1,3 +1,4 @@
+import Consts.MINUTES_IN_AN_HOUR
 import Consts.SECONDS_IN_A_MINUTE
 import Consts.SECONDS_IN_AN_HOUR
 import Consts.SECONDS_IN_A_DAY
@@ -42,6 +43,16 @@ class Time private constructor(
         return String.format("%02d:%02d", h, m)
     }
 
+    /**
+     * Gets the total number of seconds in the time.
+     */
+    fun toSeconds(): Int = SECONDS_IN_AN_HOUR * h + SECONDS_IN_A_MINUTE * m + s
+
+    /**
+     * Gets the total number of minutes in the time, ignoring seconds.
+     */
+    fun toMinutes(): Int = MINUTES_IN_AN_HOUR * h + m
+
     companion object {
 
         /**
@@ -77,6 +88,8 @@ class Time private constructor(
             s -= m * SECONDS_IN_A_MINUTE
             return Time(h, m, s)
         }
+
+        //todo now
 
     }
 
