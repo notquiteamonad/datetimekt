@@ -36,6 +36,9 @@ class Time private constructor (
 
     override fun compareTo(other: Time): Int = this.toSeconds().compareTo(other.toSeconds())
 
+    operator fun plus(other: Time): Time = Time.new(this.h + other.h, this.m + other.m, this.s + other.s)
+    operator fun minus(other: Time): Time = Time.new(this.h - other.h, this.m - other.m, this.s - other.s)
+
     /**
      * Produces a string such as 08:30 for 8 hours and 30 minutes.
      *
