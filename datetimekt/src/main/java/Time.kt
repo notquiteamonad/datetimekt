@@ -1,7 +1,8 @@
 import Consts.MINUTES_IN_AN_HOUR
-import Consts.SECONDS_IN_A_MINUTE
 import Consts.SECONDS_IN_AN_HOUR
 import Consts.SECONDS_IN_A_DAY
+import Consts.SECONDS_IN_A_MINUTE
+import java.time.LocalTime
 import java.util.regex.Pattern
 
 class Time private constructor (
@@ -114,7 +115,15 @@ class Time private constructor (
             }
         }
 
-        //todo now
+        /**
+         * Gets the current time of day as a Time.
+         */
+        @JvmStatic
+        @Suppress("unused")
+        fun now(): Time {
+            val currentTime = LocalTime.now()
+            return Time.new(currentTime.hour, currentTime.minute, currentTime.second)
+        }
 
     }
 
