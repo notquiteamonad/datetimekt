@@ -2,6 +2,7 @@ import Consts.MINUTES_IN_AN_HOUR
 import Consts.SECONDS_IN_A_MINUTE
 import Consts.SECONDS_IN_AN_HOUR
 import Consts.SECONDS_IN_A_DAY
+import java.util.regex.Pattern
 
 class Time private constructor (
     private var h: Int,
@@ -60,6 +61,8 @@ class Time private constructor (
 
     companion object {
 
+        private const val STRING_FORMAT_REGEX = """^\d{2}:\d{2}:\d{2}$"""
+
         /**
          * Produces a new Time.
          *
@@ -92,6 +95,23 @@ class Time private constructor (
             val m = s / SECONDS_IN_A_MINUTE
             s -= m * SECONDS_IN_A_MINUTE
             return Time(h, m, s)
+        }
+
+        /**
+         * Converts a string in the format hh:mm:ss as would be given by
+         * toString() into a Time.
+         *
+         * Returns null if the string is invalid.
+         */
+        @JvmStatic
+        fun fromString(string: String): Time? {
+            val pattern = Pattern.compile(STRING_FORMAT_REGEX)
+            return if (pattern.matcher(string).matches()) {
+                val parts = string.split(':')
+                Time.new(parts[0].toInt(), parts[1].toInt(), parts[2].toInt())
+            } else {
+                null
+            }
         }
 
         //todo now

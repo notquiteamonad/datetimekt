@@ -29,6 +29,13 @@ class TimeTests: StringSpec ({
         time.toHHMMString() shouldBe "03:00"
     }
 
+    "times from strings" {
+        val time = Time.new(3, 0, 39)
+        Time.fromString("03:00:39") shouldBe time
+        Time.fromString("05:a:30") shouldBe null
+        Time.fromString("05:5:30") shouldBe null
+    }
+
     "times from seconds" {
         forall(
                 row(Time.new(0, 0, 0), Time.fromSeconds(86400)),
@@ -79,7 +86,6 @@ class TimeTests: StringSpec ({
         time3 shouldBe Time.new(22, 58, 59)
     }
 
-    //todo + -
     //todo fromString
     //todo add/subtractSeconds
     //todo add/subtractMinutes
