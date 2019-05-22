@@ -38,10 +38,26 @@ class TimeTests: StringSpec ({
         }
     }
 
+    "times to seconds" {
+        forall(
+                row(0, Time.new(0, 0, 0)),
+                row(86399, Time.new(23, 59, 59))
+        ) { timeInSeconds, time ->
+            time.toSeconds() shouldBe timeInSeconds
+        }
+    }
+
+    "times to minutes" {
+        forall(
+                row(0, Time.new(0, 0, 0)),
+                row(1439, Time.new(23, 59, 59))
+        ) { timeInMinutes, time ->
+            time.toMinutes() shouldBe timeInMinutes
+        }
+    }
+
     //todo + -
     //todo < > <= >=
-    //todo toSeconds
-    //todo toMinutes
     //todo fromString
     //todo add/subtractSeconds
     //todo add/subtractMinutes
