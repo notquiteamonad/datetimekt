@@ -1,19 +1,34 @@
 import Consts.MINUTES_IN_AN_HOUR
 import Consts.SECONDS_IN_AN_HOUR
+import Consts.SECONDS_IN_A_DAY
 import Consts.SECONDS_IN_A_MINUTE
 
 abstract class TimeType (
-    private var h: Int,
-    private var m: Int,
-    private var s: Int
+        totalSeconds: Int,
+        wrap: Boolean
 ): Comparable<TimeType> {
+
+    private var h: Int
+    private var m: Int
+    private var s: Int
+
+    init {
+        var currentTotalSeconds = totalSeconds
+        while (currentTotalSeconds < 0) currentTotalSeconds += SECONDS_IN_A_DAY
+        if (wrap) while (currentTotalSeconds >= SECONDS_IN_A_DAY) currentTotalSeconds -= SECONDS_IN_A_DAY
+        h = currentTotalSeconds / SECONDS_IN_AN_HOUR
+        currentTotalSeconds -= h * SECONDS_IN_AN_HOUR
+        m = currentTotalSeconds / SECONDS_IN_A_MINUTE
+        currentTotalSeconds -= m * SECONDS_IN_A_MINUTE
+        s = currentTotalSeconds
+    }
 
     fun getHours(): Int = h
     fun getMinutes(): Int = m
     fun getSeconds(): Int = s
 
-    fun toTime(): Time = Time.new(h, m, s)
-    fun toDuration(): Duration = Duration.new(h, m, s)
+    fun toTime(): Time = Time(h, m, s)
+    fun toDuration(): Duration = Duration(h, m, s)
 
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
