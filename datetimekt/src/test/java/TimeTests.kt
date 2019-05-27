@@ -96,4 +96,15 @@ class TimeTests: StringSpec ({
         duration.toTime() shouldBe Time(1, 0, 1)
     }
 
+    "durations to strings" {
+        forall(
+                row("08:30:30", "08:30", 8, 30, 30),
+                row("100:00:00", "100:00", 100, 0, 0)
+        ) { string, hhmmString, h, m, s ->
+            val duration = Duration(h, m, s)
+            duration.toString() shouldBe string
+            duration.toHHMMString() shouldBe hhmmString
+        }
+    }
+
 })
