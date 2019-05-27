@@ -38,10 +38,10 @@ class TimeTests: StringSpec ({
 
     "times from seconds" {
         forall(
-                row(Time.new(0, 0, 0), Time.fromSeconds(86400)),
-                row(Time.new(23, 59, 59), Time.fromSeconds(-1))
-        ) { time, timeFromSeconds ->
-            timeFromSeconds shouldBe time
+                row(Time.new(0, 0, 0), 86400),
+                row(Time.new(23, 59, 59), -1)
+        ) { time, seconds ->
+            Time.fromSeconds(seconds) shouldBe time
         }
     }
 
@@ -86,10 +86,14 @@ class TimeTests: StringSpec ({
         time3 shouldBe Time.new(22, 58, 59)
     }
 
-    //todo add/subtractSeconds
-    //todo add/subtractMinutes
-    //todo add/subtractHours
-    //todo toDuration
-    //todo duration: larger than 1 day
+    "durations" {
+        var duration = Duration.fromSeconds(86401)
+        duration.getHours() shouldBe 24
+        duration.getMinutes() shouldBe 0
+        duration.getSeconds() shouldBe 1
+        duration += Time.new(1, 0, 0)
+        duration.getHours() shouldBe 25
+        duration.toTime() shouldBe Time.new(1, 0, 1)
+    }
 
 })

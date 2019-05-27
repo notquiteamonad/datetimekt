@@ -1,4 +1,3 @@
-import Consts.MINUTES_IN_AN_HOUR
 import Consts.SECONDS_IN_AN_HOUR
 import Consts.SECONDS_IN_A_DAY
 import Consts.SECONDS_IN_A_MINUTE
@@ -9,56 +8,10 @@ class Time private constructor (
     private var h: Int,
     private var m: Int,
     private var s: Int
-): Comparable<Time> {
+): TimeType(h, m, s) {
 
-    fun getHours(): Int = h
-    fun getMinutes(): Int = m
-    fun getSeconds(): Int = s
-
-    override fun equals(other: Any?): Boolean {
-        if (this === other) return true
-        if (javaClass != other?.javaClass) return false
-        other as Time
-        if (h != other.h) return false
-        if (m != other.m) return false
-        if (s != other.s) return false
-        return true
-    }
-
-    override fun hashCode(): Int {
-        var result = h
-        result = 31 * result + m
-        result = 31 * result + s
-        return result
-    }
-
-    override fun toString(): String {
-        return String.format("%02d:%02d:%02d", h, m, s)
-    }
-
-    override fun compareTo(other: Time): Int = this.toSeconds().compareTo(other.toSeconds())
-
-    operator fun plus(other: Time): Time = Time.new(this.h + other.h, this.m + other.m, this.s + other.s)
-    operator fun minus(other: Time): Time = Time.new(this.h - other.h, this.m - other.m, this.s - other.s)
-
-    /**
-     * Produces a string such as 08:30 for 8 hours and 30 minutes.
-     *
-     * Ignores seconds.
-     */
-    fun toHHMMString(): String {
-        return String.format("%02d:%02d", h, m)
-    }
-
-    /**
-     * Gets the total number of seconds in the time.
-     */
-    fun toSeconds(): Int = SECONDS_IN_AN_HOUR * h + SECONDS_IN_A_MINUTE * m + s
-
-    /**
-     * Gets the total number of minutes in the time, ignoring seconds.
-     */
-    fun toMinutes(): Int = MINUTES_IN_AN_HOUR * h + m
+    operator fun plus(other: TimeType): Time = new(this.h + other.getHours(), this.m + other.getMinutes(), this.s + other.getSeconds())
+    operator fun minus(other: TimeType): Time = new(this.h - other.getHours(), this.m - other.getMinutes(), this.s - other.getSeconds())
 
     companion object {
 
@@ -109,7 +62,7 @@ class Time private constructor (
             val pattern = Pattern.compile(STRING_FORMAT_REGEX)
             return if (pattern.matcher(string).matches()) {
                 val parts = string.split(':')
-                Time.new(parts[0].toInt(), parts[1].toInt(), parts[2].toInt())
+                new(parts[0].toInt(), parts[1].toInt(), parts[2].toInt())
             } else {
                 null
             }
@@ -122,7 +75,7 @@ class Time private constructor (
         @Suppress("unused")
         fun now(): Time {
             val currentTime = LocalTime.now()
-            return Time.new(currentTime.hour, currentTime.minute, currentTime.second)
+            return new(currentTime.hour, currentTime.minute, currentTime.second)
         }
 
     }
