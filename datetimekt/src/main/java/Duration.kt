@@ -2,6 +2,9 @@ import Consts.SECONDS_IN_AN_HOUR
 import Consts.SECONDS_IN_A_MINUTE
 import java.util.regex.Pattern
 
+/**
+ * Contains a duration in hours, minutes, and seconds.
+ */
 class Duration constructor (
         totalSeconds: Int
 ): TimeType(totalSeconds, false) {

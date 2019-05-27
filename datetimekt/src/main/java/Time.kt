@@ -3,6 +3,9 @@ import Consts.SECONDS_IN_A_MINUTE
 import java.time.LocalTime
 import java.util.regex.Pattern
 
+/**
+ * Contains a time of day, precise to the second.
+ */
 class Time constructor (
         totalSeconds: Int
 ): TimeType(totalSeconds, true) {
