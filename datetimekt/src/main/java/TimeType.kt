@@ -72,4 +72,6 @@ abstract class TimeType (
      */
     fun toMinutes(): Int = MINUTES_IN_AN_HOUR * h + m
 
+    companion object
+
 }

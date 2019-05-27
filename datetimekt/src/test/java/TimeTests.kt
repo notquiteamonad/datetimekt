@@ -107,4 +107,17 @@ class TimeTests: StringSpec ({
         }
     }
 
+    "durations from strings" {
+        forall(
+                row(8, 30, 30, "08:30:30"),
+                row(100, 0, 0, "100:00:00"),
+                row(1, 0, 0, "1:00:00")
+        ) { h, m, s, string ->
+            val duration = Duration.fromString(string)!!
+            duration.getHours() shouldBe h
+            duration.getMinutes() shouldBe m
+            duration.getSeconds() shouldBe s
+        }
+    }
+
 })
