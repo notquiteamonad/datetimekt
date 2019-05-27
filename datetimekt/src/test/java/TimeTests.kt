@@ -1,4 +1,5 @@
 import io.kotlintest.data.forall
+import io.kotlintest.properties.assertAll
 import io.kotlintest.shouldBe
 import io.kotlintest.specs.StringSpec
 import io.kotlintest.tables.row
@@ -117,6 +118,17 @@ class TimeTests: StringSpec ({
             duration.getHours() shouldBe h
             duration.getMinutes() shouldBe m
             duration.getSeconds() shouldBe s
+        }
+    }
+
+    "no negatives" {
+        assertAll { h: Int, m: Int, s: Int ->
+            Time(h, m, s).toSeconds() >= 0
+            Duration(h, m, s).toSeconds() >= 0
+        }
+        assertAll { s: Int ->
+            Time(s).toSeconds() >= 0
+            Duration(s).toSeconds() >= 0
         }
     }
 
