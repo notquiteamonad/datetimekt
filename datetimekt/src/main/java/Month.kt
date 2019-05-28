@@ -1,7 +1,6 @@
 import Consts.MAX_YEAR
 import Consts.MONTHS_IN_A_YEAR
 import java.time.LocalDate
-import java.util.*
 
 /**
  * Represents a month of a year between Jan 0000 and Dec 9999 inclusive.
@@ -13,7 +12,7 @@ import java.util.*
 class Month(
         m: Int,
         y: Int
-) {
+): Comparable<Month> {
 
     private var m: Int
     private var y: Int
@@ -49,6 +48,9 @@ class Month(
      * Returns a String in the format Jan 2019
      */
     fun toReadableString(): String = String.format("%s %04d", MONTH_STRINGS[m - 1], y)
+
+    override fun compareTo(other: Month): Int =
+            (y * MONTHS_IN_A_YEAR + m).compareTo(other.getYear() * MONTHS_IN_A_YEAR + other.getMonth())
 
     companion object {
 
