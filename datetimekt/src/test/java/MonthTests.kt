@@ -1,4 +1,5 @@
 import io.kotlintest.data.forall
+import io.kotlintest.properties.assertAll
 import io.kotlintest.shouldBe
 import io.kotlintest.specs.StringSpec
 import io.kotlintest.tables.row
@@ -12,8 +13,8 @@ class MonthTests: StringSpec ({
                 row(9999, 5, 10000, 5)
         ) { expectedY, expectedM, inputY, inputM ->
             val month = Month(inputM, inputY)
-            month.getMonths() shouldBe expectedM
-            month.getYears() shouldBe expectedY
+            month.getMonth() shouldBe expectedM
+            month.getYear() shouldBe expectedY
         }
     }
 
@@ -25,6 +26,14 @@ class MonthTests: StringSpec ({
         ) { string, readableString, m, y ->
             Month(m, y).toString() shouldBe string
             Month(m, y).toReadableString() shouldBe readableString
+        }
+    }
+
+    "all values valid" {
+        assertAll { m: Int, y: Int ->
+            val month = Month(m, y)
+            month.getYear() in 0..9999
+            month.getMonth() in 1..12
         }
     }
 
