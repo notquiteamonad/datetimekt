@@ -28,6 +28,7 @@ abstract class TimeType (
     fun getSeconds(): Int = s
 
     fun toTime(): Time = Time(h, m, s)
+    @Suppress("unused")
     fun toDuration(): Duration = Duration(h, m, s)
 
     override fun equals(other: Any?): Boolean {
