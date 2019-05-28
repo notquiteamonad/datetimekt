@@ -66,4 +66,20 @@ class MonthTests: StringSpec ({
         }
     }
 
+    "next and previous months" {
+        forall(
+                row(4, 2000, 6, 2000, 5, 2000),
+                row(11, 2000, 1, 2001, 12, 2000),
+                row(11, 9999, 12,  9999, 12, 9999),
+                row(12, 1999, 2, 2000, 1, 2000),
+                row(1, 0, 2, 0, 1, 0)
+        ) { prevM, prevY, nextM, nextY, origM, origY ->
+            val month = Month(origM, origY)
+            month.previousMonth() shouldBe Month(prevM, prevY)
+            month.nextMonth() shouldBe Month(nextM, nextY)
+        }
+    }
+
+    //todo test from date
+
 })

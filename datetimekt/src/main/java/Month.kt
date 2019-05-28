@@ -53,6 +53,34 @@ class Month(
     override fun compareTo(other: Month): Int =
             (y * MONTHS_IN_A_YEAR + m).compareTo(other.getYear() * MONTHS_IN_A_YEAR + other.getMonth())
 
+    /**
+     * Returns the next month that comes in sequence from this one.
+     *
+     * If this one is Dec 9999, it will be returned unchanged.
+     */
+    fun nextMonth(): Month =
+            if (y == MAX_YEAR && m == MONTHS_IN_A_YEAR) {
+                this
+            } else if (m == MONTHS_IN_A_YEAR) {
+                Month(1, y+1)
+            } else {
+                Month(m+1, y)
+            }
+
+    /**
+     * Returns the previous month that comes in sequence from this one.
+     *
+     * If this one is Jan 0000, it will be returned unchanged.
+     */
+    fun previousMonth(): Month =
+            if (y == 0 && m == 1) {
+                this
+            } else if (m == 1) {
+                Month(12, y-1)
+            } else {
+                Month(m-1, y)
+            }
+
     companion object {
 
         private const val VALID_FORMAT_REGEX = """^\d{4}-\d{2}$"""
