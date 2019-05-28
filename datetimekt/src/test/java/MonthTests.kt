@@ -17,4 +17,15 @@ class MonthTests: StringSpec ({
         }
     }
 
+    "month to string" {
+        forall(
+                row("2000-05", "May 2000", 5, 2000),
+                row("0050-01", "Jan 0050", 1, 50),
+                row("9999-01", "Jan 9999", 13, 10000)
+        ) { string, readableString, m, y ->
+            Month(m, y).toString() shouldBe string
+            Month(m, y).toReadableString() shouldBe readableString
+        }
+    }
+
 })
