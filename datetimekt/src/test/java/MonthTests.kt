@@ -54,4 +54,16 @@ class MonthTests: StringSpec ({
         withClue("comparison6") {(months[3] > months[1]).shouldBeTrue()}
     }
 
+    "months from strings" {
+        forall(
+                row(Month(15, 2000), "2000-15"),
+                row(null, "002-10"),
+                row(null, "2000-5"),
+                row(null, "200005"),
+                row(Month(5, 2000), "2000-05")
+        ) { expected, string ->
+            Month.fromString(string) shouldBe expected
+        }
+    }
+
 })

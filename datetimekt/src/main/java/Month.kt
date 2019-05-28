@@ -1,6 +1,7 @@
 import Consts.MAX_YEAR
 import Consts.MONTHS_IN_A_YEAR
 import java.time.LocalDate
+import java.util.regex.Pattern
 
 /**
  * Represents a month of a year between Jan 0000 and Dec 9999 inclusive.
@@ -54,14 +55,37 @@ class Month(
 
     companion object {
 
+        private const val VALID_FORMAT_REGEX = """^\d{4}-\d{2}$"""
+
         private val MONTH_STRINGS = arrayOf(
                 "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"
         )
 
+        /**
+         * Gets the current month as a Month.
+         */
+        @JvmStatic
         @Suppress("unused")
         fun thisMonth(): Month {
             val date = LocalDate.now()
             return Month(date.monthValue, date.year)
+        }
+
+        /**
+         * Converts a string in the format yyyy-mm as would be given by
+         * toString() into a Month.
+         *
+         * Returns null if the string is invalid.
+         */
+        @JvmStatic
+        fun fromString(string: String): Month? {
+            val pattern = Pattern.compile(VALID_FORMAT_REGEX)
+            return if (pattern.matcher(string).matches()) {
+                val parts = string.split('-')
+                Month(parts[1].toInt(), parts[0].toInt())
+            } else {
+                null
+            }
         }
 
     }
