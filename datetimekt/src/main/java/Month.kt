@@ -29,8 +29,8 @@ class Month(
         this.y = currentYearValue
     }
 
-    fun getMonths(): Int = m
-    fun getYears(): Int = y
+    fun getMonth(): Int = m
+    fun getYear(): Int = y
 
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
@@ -45,6 +45,9 @@ class Month(
 
     override fun toString(): String = String.format("%04d-%02d", y, m)
 
+    /**
+     * Returns a String in the format Jan 2019
+     */
     fun toReadableString(): String = String.format("%s %04d", MONTH_STRINGS[m - 1], y)
 
     companion object {
