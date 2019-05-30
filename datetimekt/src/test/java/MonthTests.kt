@@ -80,6 +80,21 @@ class MonthTests: StringSpec ({
         }
     }
 
+    "adding and subtracting months" {
+        val month1 = Month(6, 2000)
+        val month1Orig = Month(6, 2000)
+        month1.addMonths(1)
+        month1 shouldBe month1Orig.nextMonth()
+        val month2 = Month(12, 2000)
+        val month2Orig = Month(12, 2000)
+        month2.addMonths(2)
+        month2 shouldBe (month2Orig.nextMonth().nextMonth())
+        month1.subtractMonths(1)
+        month2.subtractMonths(2)
+        month1 shouldBe month1Orig
+        month2 shouldBe month2Orig
+    }
+
     //todo test from date
 
 })

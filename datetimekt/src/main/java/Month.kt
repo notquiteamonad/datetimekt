@@ -81,6 +81,32 @@ class Month(
                 Month(m-1, y)
             }
 
+    /**
+     * Adds `months` months to this Month chronologically.
+     */
+    fun addMonths(months: Int) {
+        var newMonth = this
+        repeat(months) { newMonth = newMonth.nextMonth() }
+        modifyValues(newMonth)
+    }
+
+    /**
+     * Subtracts `months` months from this Month chronologically.
+     */
+    fun subtractMonths(months: Int) {
+        var newMonth = this
+        repeat(months) { newMonth = newMonth.previousMonth() }
+        modifyValues(newMonth)
+    }
+
+    /**
+     * Sets this.m and this.y to newMonth's values.
+     */
+    private fun modifyValues(newMonth: Month) {
+        this.m = newMonth.m
+        this.y = newMonth.y
+    }
+
     companion object {
 
         private const val VALID_FORMAT_REGEX = """^\d{4}-\d{2}$"""
