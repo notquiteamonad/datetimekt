@@ -6,7 +6,7 @@ import java.util.regex.Pattern
 /**
  * Represents a month of a year between Jan 0000 and Dec 9999 inclusive.
  *
- * If m < 0 or m > 12, 12 will be added or subtracted respectively until it is in the valid range.
+ * If m < 1 or m > 12, 12 will be added or subtracted respectively until it is in the valid range.
  *
  * If y < 0 or y > 9999, it will be set to 0 or 9999 respectively.
  */
@@ -111,7 +111,7 @@ class Month(
 
         private const val VALID_FORMAT_REGEX = """^\d{4}-\d{2}$"""
 
-        private val MONTH_STRINGS = arrayOf(
+        internal val MONTH_STRINGS = arrayOf(
                 "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"
         )
 
@@ -141,6 +141,9 @@ class Month(
                 null
             }
         }
+
+        @JvmStatic
+        fun fromDate(date: Date): Month = Month(date.getMonth(), date.getYear())
 
     }
 

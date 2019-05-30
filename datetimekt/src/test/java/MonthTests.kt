@@ -95,6 +95,8 @@ class MonthTests: StringSpec ({
         month2 shouldBe month2Orig
     }
 
-    //todo test from date
+    "from date" {
+        Month.fromDate(Date(6, 5, 7)) shouldBe Month(5, 7)
+    }
 
 })
