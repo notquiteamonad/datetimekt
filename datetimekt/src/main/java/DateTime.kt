@@ -1,7 +1,7 @@
 class DateTime(
         private var d: Date,
         private var t: Time
-) {
+): Comparable<DateTime> {
 
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
@@ -21,5 +21,12 @@ class DateTime(
     override fun toString(): String = "$d@$t"
 
     fun toReadableString(): String = "${d.toReadableString()} $t"
+
+    override fun compareTo(other: DateTime): Int =
+            if (d == other.d) {
+                t.compareTo(other.t)
+            } else {
+                d.compareTo(other.d)
+            }
 
 }
