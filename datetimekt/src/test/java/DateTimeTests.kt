@@ -1,4 +1,7 @@
 import io.kotlintest.data.forall
+import io.kotlintest.matchers.boolean.shouldBeFalse
+import io.kotlintest.matchers.boolean.shouldBeTrue
+import io.kotlintest.matchers.withClue
 import io.kotlintest.shouldBe
 import io.kotlintest.specs.StringSpec
 import io.kotlintest.tables.row
@@ -22,6 +25,21 @@ class DateTimeTests: StringSpec ({
     "equality" {
         DateTime(Date(1, 2, 3), Time(1, 2, 3)) shouldBe
                 DateTime(Date(1, 2, 3), Time(1, 2, 3))
+    }
+
+    "comparison" {
+        val dts = arrayOf(
+                DateTime(Date(2000, 6, 5), Time(8, 30, 0)),
+                DateTime(Date(2000, 6, 5), Time(8, 30, 0)),
+                DateTime(Date(2000, 6, 5), Time(9, 0, 0)),
+                DateTime(Date(2000, 6, 6), Time(8, 30, 0))
+        )
+        withClue("comparison1") {(dts[0] <= dts[1]).shouldBeTrue()}
+        withClue("comparison2") {(dts[0] < dts[1]).shouldBeFalse()}
+        withClue("comparison3") {(dts[0] >= dts[1]).shouldBeTrue()}
+        withClue("comparison4") {(dts[0] < dts[2]).shouldBeTrue()}
+        withClue("comparison5") {(dts[2] < dts[3]).shouldBeTrue()}
+        withClue("comparison6") {(dts[3] > dts[1]).shouldBeTrue()}
     }
 
 })
