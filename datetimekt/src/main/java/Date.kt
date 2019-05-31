@@ -26,7 +26,7 @@ class Date(
     private var y: Int
 
     init {
-        val month = Month(m, y)
+        val month = Month(y, m)
         var currentDateValue = d
         if (currentDateValue < 1) {
             currentDateValue = 1

@@ -11,8 +11,8 @@ import java.util.regex.Pattern
  * If y < 0 or y > 9999, it will be set to 0 or 9999 respectively.
  */
 class Month(
-        m: Int,
-        y: Int
+        y: Int,
+        m: Int
 ): Comparable<Month> {
 
     private var m: Int
@@ -62,9 +62,9 @@ class Month(
             if (y == MAX_YEAR && m == MONTHS_IN_A_YEAR) {
                 this
             } else if (m == MONTHS_IN_A_YEAR) {
-                Month(1, y+1)
+                Month(y+1, 1)
             } else {
-                Month(m+1, y)
+                Month(y, m+1)
             }
 
     /**
@@ -76,9 +76,9 @@ class Month(
             if (y == 0 && m == 1) {
                 this
             } else if (m == 1) {
-                Month(12, y-1)
+                Month(y-1, 12)
             } else {
-                Month(m-1, y)
+                Month(y, m-1)
             }
 
     /**
@@ -122,7 +122,7 @@ class Month(
         @Suppress("unused")
         fun thisMonth(): Month {
             val date = LocalDate.now()
-            return Month(date.monthValue, date.year)
+            return Month(date.year, date.monthValue)
         }
 
         /**
@@ -136,14 +136,14 @@ class Month(
             val pattern = Pattern.compile(VALID_FORMAT_REGEX)
             return if (pattern.matcher(string).matches()) {
                 val parts = string.split('-')
-                Month(parts[1].toInt(), parts[0].toInt())
+                Month(parts[0].toInt(), parts[1].toInt())
             } else {
                 null
             }
         }
 
         @JvmStatic
-        fun fromDate(date: Date): Month = Month(date.getMonth(), date.getYear())
+        fun fromDate(date: Date): Month = Month(date.getYear(), date.getMonth())
 
     }
 
