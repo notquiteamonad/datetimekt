@@ -30,8 +30,8 @@ class Date(
         var currentDateValue = d
         if (currentDateValue < 1) {
             currentDateValue = 1
-        } else if (currentDateValue > getLastDateInMonth(month.getMonth(), month.getYear())) {
-            currentDateValue = getLastDateInMonth(month.getMonth(), month.getYear())
+        } else if (currentDateValue > getLastDateInMonth(month.getYear(), month.getMonth())) {
+            currentDateValue = getLastDateInMonth(month.getYear(), month.getMonth())
         }
         this.d = currentDateValue
         this.m = month.getMonth()
@@ -86,7 +86,7 @@ class Date(
             totalDays += if (isLeapYear(currentY)) 366 else 365
         }
         for (currentM in 1 until m) {
-            totalDays += getLastDateInMonth(currentM, y)
+            totalDays += getLastDateInMonth(y, currentM)
         }
         totalDays += d
         return totalDays
@@ -136,8 +136,8 @@ class Date(
                 totalDays -= if (isLeapYear(years)) 366 else 365
                 years++
             }
-            while (totalDays > getLastDateInMonth(months, years)) {
-                totalDays -= getLastDateInMonth(months, years)
+            while (totalDays > getLastDateInMonth(years, months)) {
+                totalDays -= getLastDateInMonth(years, months)
                 months++
             }
             return Date(totalDays, months, years)
