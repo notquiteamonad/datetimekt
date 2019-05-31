@@ -96,7 +96,7 @@ class MonthTests: StringSpec ({
     }
 
     "from date" {
-        Month.fromDate(Date(6, 5, 7)) shouldBe Month(7, 5)
+        Month.fromDate(Date(7, 5, 6)) shouldBe Month(7, 5)
     }
 
 })
