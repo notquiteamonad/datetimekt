@@ -11,6 +11,9 @@ import java.util.regex.Pattern
  * If m < 0 or m > 12, 12 will be added or subtracted respectively until it is in the valid range.
  *
  * If y < 0 or y > 9999, it will be set to 0 or 9999 respectively.
+ *
+ * The correct way to get relative mutations is to convert using toDays and fromDays or modify individual values in a
+ * new Date using the constructor.
  */
 class Date(
         d: Int,
@@ -78,7 +81,7 @@ class Date(
      * Gets the number of days since 1 Jan 0000 (including that date and this one)
      */
     fun toDays(): Int {
-        var totalDays = 0;
+        var totalDays = 0
         for (currentY in 0 until y) {
             totalDays += if (isLeapYear(currentY)) 366 else 365
         }
@@ -120,6 +123,24 @@ class Date(
             } else {
                 null
             }
+        }
+
+        fun fromDays(totalNumberOfDays: Int): Date? {
+            if (totalNumberOfDays < 1) {
+                return null
+            }
+            var totalDays = totalNumberOfDays
+            var years = 0
+            var months = 1
+            while (totalDays > if (isLeapYear(years)) 366 else 365) {
+                totalDays -= if (isLeapYear(years)) 366 else 365
+                years++
+            }
+            while (totalDays > getLastDateInMonth(months, years)) {
+                totalDays -= getLastDateInMonth(months, years)
+                months++
+            }
+            return Date(totalDays, months, years)
         }
 
     }
