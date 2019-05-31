@@ -15,7 +15,7 @@ class MonthTests: StringSpec ({
                 row(2000, 1, 2000, 13),
                 row(9999, 5, 10000, 5)
         ) { expectedY, expectedM, inputY, inputM ->
-            val month = Month(inputM, inputY)
+            val month = Month(inputY, inputM)
             month.getMonth() shouldBe expectedM
             month.getYear() shouldBe expectedY
         }
@@ -27,25 +27,25 @@ class MonthTests: StringSpec ({
                 row("0050-01", "Jan 0050", 1, 50),
                 row("9999-01", "Jan 9999", 13, 10000)
         ) { string, readableString, m, y ->
-            Month(m, y).toString() shouldBe string
-            Month(m, y).toReadableString() shouldBe readableString
+            Month(y, m).toString() shouldBe string
+            Month(y, m).toReadableString() shouldBe readableString
         }
     }
 
     "all values valid" {
         assertAll { m: Int, y: Int ->
-            val month = Month(m, y)
+            val month = Month(y, m)
             month.getYear() in 0..9999
             month.getMonth() in 1..12
         }
     }
 
     "equality" {
-        Month(5, 2000) shouldBe Month(5, 2000)
+        Month(2000, 5) shouldBe Month(2000, 5)
     }
 
     "comparison" {
-        val months = arrayOf(Month(5, 2000), Month(5, 2000), Month(6, 2000), Month(1, 2001))
+        val months = arrayOf(Month(2000, 5), Month(2000, 5), Month(2000, 6), Month(2001, 1))
         withClue("comparison1") {(months[0] <= months[1]).shouldBeTrue()}
         withClue("comparison2") {(months[0] < months[1]).shouldBeFalse()}
         withClue("comparison3") {(months[0] >= months[1]).shouldBeTrue()}
@@ -56,11 +56,11 @@ class MonthTests: StringSpec ({
 
     "months from strings" {
         forall(
-                row(Month(15, 2000), "2000-15"),
+                row(Month(2000, 15), "2000-15"),
                 row(null, "002-10"),
                 row(null, "2000-5"),
                 row(null, "200005"),
-                row(Month(5, 2000), "2000-05")
+                row(Month(2000, 5), "2000-05")
         ) { expected, string ->
             Month.fromString(string) shouldBe expected
         }
@@ -74,19 +74,19 @@ class MonthTests: StringSpec ({
                 row(12, 1999, 2, 2000, 1, 2000),
                 row(1, 0, 2, 0, 1, 0)
         ) { prevM, prevY, nextM, nextY, origM, origY ->
-            val month = Month(origM, origY)
-            month.previousMonth() shouldBe Month(prevM, prevY)
-            month.nextMonth() shouldBe Month(nextM, nextY)
+            val month = Month(origY, origM)
+            month.previousMonth() shouldBe Month(prevY, prevM)
+            month.nextMonth() shouldBe Month(nextY, nextM)
         }
     }
 
     "adding and subtracting months" {
-        val month1 = Month(6, 2000)
-        val month1Orig = Month(6, 2000)
+        val month1 = Month(2000, 6)
+        val month1Orig = Month(2000, 6)
         month1.addMonths(1)
         month1 shouldBe month1Orig.nextMonth()
-        val month2 = Month(12, 2000)
-        val month2Orig = Month(12, 2000)
+        val month2 = Month(2000, 12)
+        val month2Orig = Month(2000, 12)
         month2.addMonths(2)
         month2 shouldBe (month2Orig.nextMonth().nextMonth())
         month1.subtractMonths(1)
@@ -96,7 +96,7 @@ class MonthTests: StringSpec ({
     }
 
     "from date" {
-        Month.fromDate(Date(6, 5, 7)) shouldBe Month(5, 7)
+        Month.fromDate(Date(6, 5, 7)) shouldBe Month(7, 5)
     }
 
 })
