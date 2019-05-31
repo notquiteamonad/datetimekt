@@ -2,6 +2,7 @@ import io.kotlintest.data.forall
 import io.kotlintest.matchers.boolean.shouldBeFalse
 import io.kotlintest.matchers.boolean.shouldBeTrue
 import io.kotlintest.matchers.withClue
+import io.kotlintest.properties.assertAll
 import io.kotlintest.shouldBe
 import io.kotlintest.specs.StringSpec
 import io.kotlintest.tables.row
@@ -20,6 +21,15 @@ class DateTests: StringSpec ({
             date.getDate() shouldBe expectedD
             date.getMonth() shouldBe expectedM
             date.getYear() shouldBe expectedY
+        }
+    }
+
+    "all values valid" {
+        assertAll { d: Int, m: Int, y: Int ->
+            val date = Date(y, m, d)
+            date.getYear() in 0..9999
+            date.getMonth() in 1..12
+            date.getDate() in 0..31
         }
     }
 

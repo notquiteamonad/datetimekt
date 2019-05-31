@@ -53,9 +53,9 @@ class Date(
     }
 
     override fun hashCode(): Int {
-        var result = d
+        var result = y
         result = 31 * result + m
-        result = 31 * result + y
+        result = 31 * result + d
         return result
     }
 
