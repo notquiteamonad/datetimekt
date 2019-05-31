@@ -65,7 +65,7 @@ class DateTests: StringSpec ({
     }
 
     "to month" {
-        Date(5, 6, 7).toMonth() shouldBe Month(6, 7)
+        Date(5, 6, 7).toMonth() shouldBe Month(7, 6)
     }
 
     "to days" {
