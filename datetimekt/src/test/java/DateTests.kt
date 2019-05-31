@@ -53,6 +53,17 @@ class DateTests: StringSpec ({
             withClue("comparison6") {(dates[3] > dates[1]).shouldBeTrue()}
     }
 
+    "date from string" {
+        forall(
+                row(Date(10, 6, 2000), "2000-06-10"),
+                row(Date(10, 4, 2000), "2000-16-10"),
+                row(null, "20000610"),
+                row(null, "20O0-06-10")
+        ) { expected, string ->
+            Date.fromString(string) shouldBe expected
+        }
+    }
+
     "to month" {
         Date(5, 6, 7).toMonth() shouldBe Month(6, 7)
     }
