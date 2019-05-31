@@ -16,14 +16,14 @@ import java.util.regex.Pattern
  * new Date using the constructor.
  */
 class Date(
-        d: Int,
+        y: Int,
         m: Int,
-        y: Int
+        d: Int
 ): Comparable<Date> {
 
-    private var d: Int
-    private var m: Int
     private var y: Int
+    private var m: Int
+    private var d: Int
 
     init {
         val month = Month(y, m)
@@ -38,9 +38,9 @@ class Date(
         this.y = month.getYear()
     }
 
-    fun getDate(): Int = d
-    fun getMonth(): Int = m
     fun getYear(): Int = y
+    fun getMonth(): Int = m
+    fun getDate(): Int = d
 
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
@@ -105,7 +105,7 @@ class Date(
         @Suppress("unused")
         fun today(): Date {
             val date = LocalDate.now()
-            return Date(date.dayOfMonth, date.monthValue, date.year)
+            return Date(date.year, date.monthValue, date.dayOfMonth)
         }
 
         /**
@@ -119,7 +119,7 @@ class Date(
             val pattern = Pattern.compile(VALID_FORMAT_REGEX)
             return if (pattern.matcher(string).matches()) {
                 val parts = string.split('-')
-                Date(parts[2].toInt(), parts[1].toInt(), parts[0].toInt())
+                Date(parts[0].toInt(), parts[1].toInt(), parts[2].toInt())
             } else {
                 null
             }
@@ -140,7 +140,7 @@ class Date(
                 totalDays -= getLastDateInMonth(years, months)
                 months++
             }
-            return Date(totalDays, months, years)
+            return Date(years, months, totalDays)
         }
 
     }

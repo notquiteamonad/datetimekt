@@ -16,7 +16,7 @@ class DateTests: StringSpec ({
                 row(2000, 1, 5, 2000, 13, 5),
                 row(9999, 5, 5, 10000, 5, 5)
         ) { expectedY, expectedM, expectedD, inputY, inputM, inputD ->
-            val date = Date(inputD, inputM, inputY)
+            val date = Date(inputY, inputM, inputD)
             date.getDate() shouldBe expectedD
             date.getMonth() shouldBe expectedM
             date.getYear() shouldBe expectedY
@@ -29,21 +29,21 @@ class DateTests: StringSpec ({
                 row("0050-01-01", "1 Jan 0050", 1, 1, 50),
                 row("9999-01-01", "1 Jan 9999", 1, 13, 10000)
         ) { string, readableString, d, m, y ->
-            Date(d, m, y).toString() shouldBe string
-            Date(d, m, y).toReadableString() shouldBe readableString
+            Date(y, m, d).toString() shouldBe string
+            Date(y, m, d).toReadableString() shouldBe readableString
         }
     }
 
     "equality" {
-        Date(1, 5, 9) shouldBe Date(1, 5, 9)
+        Date(9, 5, 1) shouldBe Date(9, 5, 1)
     }
 
     "comparison" {
             val dates = arrayOf(
-                    Date(5, 6, 2000),
-                    Date(5, 6, 2000),
-                    Date(4, 7, 2000),
-                    Date(1, 1, 2001)
+                    Date(2000, 6, 5),
+                    Date(2000, 6, 5),
+                    Date(2000, 7, 4),
+                    Date(2001, 1, 1)
             )
             withClue("comparison1") {(dates[0] <= dates[1]).shouldBeTrue()}
             withClue("comparison2") {(dates[0] < dates[1]).shouldBeFalse()}
@@ -55,8 +55,8 @@ class DateTests: StringSpec ({
 
     "date from string" {
         forall(
-                row(Date(10, 6, 2000), "2000-06-10"),
-                row(Date(10, 4, 2000), "2000-16-10"),
+                row(Date(2000, 6, 10), "2000-06-10"),
+                row(Date(2000, 4, 10), "2000-16-10"),
                 row(null, "20000610"),
                 row(null, "20O0-06-10")
         ) { expected, string ->
@@ -65,15 +65,15 @@ class DateTests: StringSpec ({
     }
 
     "to month" {
-        Date(5, 6, 7).toMonth() shouldBe Month(7, 6)
+        Date(7, 6, 5).toMonth() shouldBe Month(7, 6)
     }
 
     "to days" {
-        Date(29, 2, 2000).toDays() shouldBe 730545
+        Date(2000, 2, 29).toDays() shouldBe 730545
     }
 
     "from days" {
-        Date.fromDays(730545) shouldBe Date(29, 2, 2000)
+        Date.fromDays(730545) shouldBe Date(2000, 2, 29)
         Date.fromDays(0) shouldBe null
     }
 
