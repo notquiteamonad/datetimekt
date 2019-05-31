@@ -68,4 +68,13 @@ class DateTests: StringSpec ({
         Date(5, 6, 7).toMonth() shouldBe Month(6, 7)
     }
 
+    "to days" {
+        Date(29, 2, 2000).toDays() shouldBe 730545
+    }
+
+    "from days" {
+        Date.fromDays(730545) shouldBe Date(29, 2, 2000)
+        Date.fromDays(0) shouldBe null
+    }
+
 })
