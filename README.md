@@ -8,9 +8,9 @@
 [![Average time to resolve an issue][isitmaintained-resolution-image]][isitmaintained]
 [![Percentage of issues still open][isitmaintained-open-image]][isitmaintained]
 
-[travis-image]: https://travis-ci.com/samueldple/date-time-kt.svg?branch=master
+[travis-image]: https://travis-ci.org/samueldple/date-time-kt.svg?branch=master
 
-[travis]: https://travis-ci.com/samueldple/date-time-kt
+[travis]: https://travis-ci.org/samueldple/date-time-kt
 
 [apache-image]: https://img.shields.io/badge/License-Apache%202.0-blue.svg
 
