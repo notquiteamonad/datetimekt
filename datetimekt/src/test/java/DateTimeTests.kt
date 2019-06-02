@@ -42,4 +42,11 @@ class DateTimeTests: StringSpec ({
         withClue("comparison6") {(dts[3] > dts[1]).shouldBeTrue()}
     }
 
+    "datetime from string" {
+        val valid = DateTime(Date(2000, 5, 10), Time(8, 30, 0))
+        DateTime.fromString("2000-05-10@08:30:00") shouldBe valid
+        DateTime.fromString("2000-05-10 08:30:00") shouldBe valid
+        DateTime.fromString("2-a11111@05:a:04") shouldBe null
+    }
+
 })

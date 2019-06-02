@@ -96,7 +96,7 @@ class Date(
 
     companion object {
 
-        private const val VALID_FORMAT_REGEX = """^\d{4}-\d{2}-\d{2}$"""
+        private const val STRING_FORMAT_REGEX = """^\d{4}-\d{2}-\d{2}$"""
 
         /**
          * Gets the current date as a Date.
@@ -116,7 +116,7 @@ class Date(
          */
         @JvmStatic
         fun fromString(string: String): Date? {
-            val pattern = Pattern.compile(VALID_FORMAT_REGEX)
+            val pattern = Pattern.compile(STRING_FORMAT_REGEX)
             return if (pattern.matcher(string).matches()) {
                 val parts = string.split('-')
                 Date(parts[0].toInt(), parts[1].toInt(), parts[2].toInt())
