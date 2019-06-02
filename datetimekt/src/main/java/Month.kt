@@ -109,7 +109,7 @@ class Month(
 
     companion object {
 
-        private const val VALID_FORMAT_REGEX = """^\d{4}-\d{2}$"""
+        private const val STRING_FORMAT_REGEX = """^\d{4}-\d{2}$"""
 
         internal val MONTH_STRINGS = arrayOf(
                 "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"
@@ -133,7 +133,7 @@ class Month(
          */
         @JvmStatic
         fun fromString(string: String): Month? {
-            val pattern = Pattern.compile(VALID_FORMAT_REGEX)
+            val pattern = Pattern.compile(STRING_FORMAT_REGEX)
             return if (pattern.matcher(string).matches()) {
                 val parts = string.split('-')
                 Month(parts[0].toInt(), parts[1].toInt())
