@@ -38,6 +38,7 @@ class DateTime(
         /**
          * Gets the current date and time as a DateTime.
          */
+        @Suppress("unused")
         fun now(): DateTime = DateTime(Date.today(), Time.now())
 
         /**
