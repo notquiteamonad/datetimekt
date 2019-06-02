@@ -1,36 +1,36 @@
-# date-time-kt: High-Level Date and Time for Kotlin
+# datetimekt: High-Level Date and Time for Kotlin
 
 [![License][apache-image]][apache]
-[![date-time-kt on Travis CI][travis-image]][travis]
+[![datetimekt on Travis CI][travis-image]][travis]
 [![FOSSA Status][fossa-image]][fossa]
-[![date-time-kt on Jitpack][jitpack-image]][jitpack]
+[![datetimekt on Jitpack][jitpack-image]][jitpack]
 
 [![Average time to resolve an issue][isitmaintained-resolution-image]][isitmaintained]
 [![Percentage of issues still open][isitmaintained-open-image]][isitmaintained]
 
-[travis-image]: https://travis-ci.org/samueldple/date-time-kt.svg?branch=master
+[travis-image]: https://travis-ci.org/samueldple/datetimekt.svg?branch=master
 
-[travis]: https://travis-ci.org/samueldple/date-time-kt
+[travis]: https://travis-ci.org/samueldple/datetimekt
 
 [apache-image]: https://img.shields.io/badge/License-Apache%202.0-blue.svg
 
 [apache]: https://opensource.org/licenses/Apache-2.0
 
-[fossa]: https://app.fossa.io/projects/git%2Bgithub.com%2Fsamueldple%2Fdate-time-kt?ref=badge_shield
+[fossa]: https://app.fossa.io/projects/git%2Bgithub.com%2Fsamueldple%2Fdatetimekt?ref=badge_shield
 
-[fossa-image]: https://app.fossa.io/api/projects/git%2Bgithub.com%2Fsamueldple%2Fdate-time-kt.svg?type=shield
+[fossa-image]: https://app.fossa.io/api/projects/git%2Bgithub.com%2Fsamueldple%2Fdatetimekt.svg?type=shield
 
-[jitpack]: https://jitpack.io/#samueldple/date-time-kt
+[jitpack]: https://jitpack.io/#samueldple/datetimekt
 
-[jitpack-image]: https://jitpack.io/v/samueldple/date-time-kt.svg
+[jitpack-image]: https://jitpack.io/v/samueldple/datetimekt.svg
 
-[isitmaintained]: http://isitmaintained.com/project/samueldple/date-time-kt
+[isitmaintained]: http://isitmaintained.com/project/samueldple/datetimekt
 
-[isitmaintained-resolution-image]: http://isitmaintained.com/badge/resolution/samueldple/date-time-kt.svg
+[isitmaintained-resolution-image]: http://isitmaintained.com/badge/resolution/samueldple/datetimekt.svg
 
-[isitmaintained-open-image]: http://isitmaintained.com/badge/open/samueldple/date-time-kt.svg
+[isitmaintained-open-image]: http://isitmaintained.com/badge/open/samueldple/datetimekt.svg
 
-date-time-kt is a high-level Kotlin library for use in situations where
+datetimekt is a high-level Kotlin library for use in situations where
 precision beyond seconds is not necessary.
 
 It handles serialisable dates and times from 01 Jan 0000 at 00:00:00 to
@@ -39,13 +39,13 @@ Dec 31 9999 at 23:59:59.
 **Note:** This README may contain documentation of features which have not been released yet. To ensure
 it is accurate for a specific version, use the tag selector and select the version you're using.
 
-[Changelog](https://github.com/samueldple/date-time-kt/blob/master/CHANGELOG.md)
+[Changelog](https://github.com/samueldple/datetimekt/blob/master/CHANGELOG.md)
 
-[Code of Conduct](https://github.com/samueldple/date-time-kt/blob/master/CODE_OF_CONDUCT.md)
+[Code of Conduct](https://github.com/samueldple/datetimekt/blob/master/CODE_OF_CONDUCT.md)
 
 ## Usage
 
-See [here](https://jitpack.io/#samueldple/date-time-kt)
+See [here](https://jitpack.io/#samueldple/datetimekt)
 
 ## Overview
 
