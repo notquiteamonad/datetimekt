@@ -1,3 +1,3 @@
 language: java
-install: mvn install -DskipTests=true -Dmaven.javadoc.skip=true -B -V
-script: mvn test -B
+install: mvn install -DskipTests=true -Dmaven.javadoc.skip=true -B -V -f ./datetimekt/pom.xml
+script: mvn test -B -f ./datetimekt/pom.xml
