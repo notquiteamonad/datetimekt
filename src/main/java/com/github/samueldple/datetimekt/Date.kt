@@ -1,5 +1,7 @@
-import Utils.getLastDateInMonth
-import Utils.isLeapYear
+package com.github.samueldple.datetimekt
+
+import com.github.samueldple.datetimekt.Utils.getLastDateInMonth
+import com.github.samueldple.datetimekt.Utils.isLeapYear
 import java.time.LocalDate
 import java.util.regex.Pattern
 

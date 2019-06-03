@@ -1,3 +1,5 @@
+package com.github.samueldple.datetimekt
+
 internal object Utils {
 
     internal fun getLastDateInMonth(year: Int, month: Int): Int {
