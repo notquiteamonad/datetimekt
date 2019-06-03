@@ -1,3 +1,5 @@
+package com.github.samueldple.datetimekt
+
 internal object Consts {
 
     internal const val SECONDS_IN_A_MINUTE = 60

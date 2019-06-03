@@ -1,3 +1,6 @@
+import com.github.samueldple.datetimekt.Date
+import com.github.samueldple.datetimekt.DateTime
+import com.github.samueldple.datetimekt.Time
 import io.kotlintest.data.forall
 import io.kotlintest.matchers.boolean.shouldBeFalse
 import io.kotlintest.matchers.boolean.shouldBeTrue

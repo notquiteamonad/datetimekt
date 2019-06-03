@@ -1,5 +1,7 @@
-import Consts.MAX_YEAR
-import Consts.MONTHS_IN_A_YEAR
+package com.github.samueldple.datetimekt
+
+import com.github.samueldple.datetimekt.Consts.MAX_YEAR
+import com.github.samueldple.datetimekt.Consts.MONTHS_IN_A_YEAR
 import java.time.LocalDate
 import java.util.regex.Pattern
 

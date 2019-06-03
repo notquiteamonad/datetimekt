@@ -1,3 +1,5 @@
+import com.github.samueldple.datetimekt.Duration
+import com.github.samueldple.datetimekt.Time
 import io.kotlintest.data.forall
 import io.kotlintest.properties.assertAll
 import io.kotlintest.shouldBe
