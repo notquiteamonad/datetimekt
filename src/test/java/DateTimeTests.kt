@@ -11,6 +11,14 @@ import io.kotlintest.tables.row
 
 class DateTimeTests: StringSpec ({
 
+    "valid" {
+        val date = Date(2000, 5, 1)
+        val time = Time(5, 6, 7)
+        val dt = DateTime(date, time)
+        dt.getDate() shouldBe date
+        dt.getTime() shouldBe time
+    }
+
     "datetime to string" {
         forall(
                 row("2000-05-01@08:30:00", "1 May 2000 08:30:00", 1, 5, 2000, 8, 30, 0),
