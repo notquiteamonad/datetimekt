@@ -1,5 +1,7 @@
-import Consts.SECONDS_IN_AN_HOUR
-import Consts.SECONDS_IN_A_MINUTE
+package com.github.samueldple.datetimekt
+
+import com.github.samueldple.datetimekt.Consts.SECONDS_IN_AN_HOUR
+import com.github.samueldple.datetimekt.Consts.SECONDS_IN_A_MINUTE
 import java.util.regex.Pattern
 
 /**

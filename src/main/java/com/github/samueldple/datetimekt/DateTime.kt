@@ -1,3 +1,5 @@
+package com.github.samueldple.datetimekt
+
 import java.util.regex.Pattern
 
 class DateTime(
