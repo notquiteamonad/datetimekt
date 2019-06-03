@@ -7,6 +7,9 @@ class DateTime(
         private var t: Time
 ): Comparable<DateTime> {
 
+    fun getDate(): Date = d
+    fun getTime(): Time = t
+
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
         if (javaClass != other?.javaClass) return false
