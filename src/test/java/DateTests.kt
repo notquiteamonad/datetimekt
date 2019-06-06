@@ -50,6 +50,10 @@ class DateTests: StringSpec ({
         Date(9, 5, 1) shouldBe Date(9, 5, 1)
     }
 
+    "hashcode" {
+        Date(2000, 5, 6).hashCode() shouldBe 1922161
+    }
+
     "comparison" {
             val dates = arrayOf(
                     Date(2000, 6, 5),
