@@ -1,6 +1,7 @@
 import com.github.samueldple.datetimekt.Duration
 import com.github.samueldple.datetimekt.Time
 import io.kotlintest.data.forall
+import io.kotlintest.matchers.boolean.shouldBeFalse
 import io.kotlintest.properties.assertAll
 import io.kotlintest.shouldBe
 import io.kotlintest.specs.StringSpec
@@ -24,6 +25,10 @@ class TimeTests: StringSpec ({
             time.getMinutes() shouldBe m
             time.getSeconds() shouldBe s
         }
+    }
+
+    "hashcode" {
+        Time(1, 2, 3).hashCode() shouldBe 1026
     }
 
     "times to strings" {
@@ -87,6 +92,10 @@ class TimeTests: StringSpec ({
         var time3 = time0
         time3 -= time1
         time3 shouldBe Time(22, 58, 59)
+    }
+
+    "time to duration" {
+        Time(1, 2, 3).toDuration() shouldBe Duration(1, 2, 3)
     }
 
     "durations" {
