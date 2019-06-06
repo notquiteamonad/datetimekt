@@ -1,7 +1,6 @@
 import com.github.samueldple.datetimekt.Duration
 import com.github.samueldple.datetimekt.Time
 import io.kotlintest.data.forall
-import io.kotlintest.matchers.boolean.shouldBeFalse
 import io.kotlintest.properties.assertAll
 import io.kotlintest.shouldBe
 import io.kotlintest.specs.StringSpec
@@ -106,6 +105,7 @@ class TimeTests: StringSpec ({
         duration += Time(1, 0, 0)
         duration.getHours() shouldBe 25
         duration.toTime() shouldBe Time(1, 0, 1)
+        duration - Time(2, 0, 0) shouldBe Duration(23, 0, 1)
     }
 
     "durations to strings" {
@@ -130,6 +130,10 @@ class TimeTests: StringSpec ({
             duration.getMinutes() shouldBe m
             duration.getSeconds() shouldBe s
         }
+    }
+
+    "invalid duration from string" {
+        Duration.fromString("") shouldBe null
     }
 
     "no negatives" {
