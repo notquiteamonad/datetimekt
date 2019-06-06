@@ -46,6 +46,10 @@ class MonthTests: StringSpec ({
         Month(2000, 5) shouldBe Month(2000, 5)
     }
 
+    "hashcode" {
+        Month(2000, 5).hashCode() shouldBe 62005
+    }
+
     "comparison" {
         val months = arrayOf(Month(2000, 5), Month(2000, 5), Month(2000, 6), Month(2001, 1))
         withClue("comparison1") {(months[0] <= months[1]).shouldBeTrue()}
