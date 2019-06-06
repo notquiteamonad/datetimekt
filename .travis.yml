@@ -5,3 +5,6 @@ branches:
   except:
     - staging.tmp
     - trying.tmp
+addons:
+  sonarcloud:
+    organization: "samueldple-github"
