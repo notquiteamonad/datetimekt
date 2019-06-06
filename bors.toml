@@ -1,2 +1,2 @@
 status = ["continuous-integration/travis-ci/push"]
-pr-status = ["License Compliance"]
+pr-status = ["License Compliance", "SonarCloud Code Analysis"]

@@ -26,6 +26,10 @@ class TimeTests: StringSpec ({
         }
     }
 
+    "hashcode" {
+        Time(1, 2, 3).hashCode() shouldBe 1026
+    }
+
     "times to strings" {
         val time = Time(3, 0, 39)
         time.toString() shouldBe "03:00:39"
@@ -89,6 +93,10 @@ class TimeTests: StringSpec ({
         time3 shouldBe Time(22, 58, 59)
     }
 
+    "time to duration" {
+        Time(1, 2, 3).toDuration() shouldBe Duration(1, 2, 3)
+    }
+
     "durations" {
         var duration = Duration(86401)
         duration.getHours() shouldBe 24
@@ -97,6 +105,7 @@ class TimeTests: StringSpec ({
         duration += Time(1, 0, 0)
         duration.getHours() shouldBe 25
         duration.toTime() shouldBe Time(1, 0, 1)
+        duration - Time(2, 0, 0) shouldBe Duration(23, 0, 1)
     }
 
     "durations to strings" {
@@ -121,6 +130,10 @@ class TimeTests: StringSpec ({
             duration.getMinutes() shouldBe m
             duration.getSeconds() shouldBe s
         }
+    }
+
+    "invalid duration from string" {
+        Duration.fromString("") shouldBe null
     }
 
     "no negatives" {

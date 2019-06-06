@@ -38,6 +38,10 @@ class DateTimeTests: StringSpec ({
                 DateTime(Date(1, 2, 3), Time(1, 2, 3))
     }
 
+    "hashcode" {
+        DateTime(Date(2000, 5, 6), Time(1, 2, 3)).hashCode() shouldBe 59588017
+    }
+
     "comparison" {
         val dts = arrayOf(
                 DateTime(Date(2000, 6, 5), Time(8, 30, 0)),

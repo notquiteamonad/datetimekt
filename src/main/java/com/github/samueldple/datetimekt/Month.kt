@@ -43,7 +43,7 @@ class Month(
         return true
     }
 
-    override fun hashCode(): Int = 31 * m + y
+    override fun hashCode(): Int = 31 * y + m
 
     override fun toString(): String = String.format("%04d-%02d", y, m)
 
