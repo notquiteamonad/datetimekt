@@ -94,7 +94,7 @@ class MonthTests: StringSpec ({
         val month2 = Month(2000, 12)
         val month2Orig = Month(2000, 12)
         month2.addMonths(2)
-        month2 shouldBe (month2Orig.nextMonth().nextMonth())
+        month2 shouldBe month2Orig.nextMonth().nextMonth()
         month1.subtractMonths(1)
         month2.subtractMonths(2)
         month1 shouldBe month1Orig

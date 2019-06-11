@@ -8,6 +8,7 @@
 [![Average time to resolve an issue][isitmaintained-resolution-image]][isitmaintained]
 [![Percentage of issues still open][isitmaintained-open-image]][isitmaintained]
 [![Quality Gate Status][sonarcloud-image]][sonarcloud]
+[![CodeFactor][codefactor-image]][codefactor]
 
 [travis-image]: https://travis-ci.org/samueldple/datetimekt.svg?branch=master
 
@@ -34,6 +35,10 @@
 [sonarcloud]: https://sonarcloud.io/dashboard?id=samueldple%3Adatetimekt
 
 [sonarcloud-image]: https://sonarcloud.io/api/project_badges/measure?project=samueldple%3Adatetimekt&metric=alert_status
+
+[codefactor]: https://www.codefactor.io/repository/github/samueldple/datetimekt
+
+[codefactor-image]: https://www.codefactor.io/repository/github/samueldple/datetimekt/badge
 
 datetimekt is a high-level Kotlin library for use in situations where
 precision beyond seconds is not necessary.
