@@ -86,8 +86,8 @@ class TimeTests: StringSpec ({
         val time0 = Time(0, 0, 0)
         val time1 = Time(1, 1, 1)
         val time2 = Time(2, 2, 2)
-        (time1 + time1) shouldBe time2
-        (time1 - time1) shouldBe time0
+        time1 + time1 shouldBe time2
+        time1 - time1 shouldBe time0
         var time3 = time0
         time3 -= time1
         time3 shouldBe Time(22, 58, 59)
