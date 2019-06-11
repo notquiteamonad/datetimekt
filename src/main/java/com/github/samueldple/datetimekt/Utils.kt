@@ -10,6 +10,6 @@ internal object Utils {
         }
     }
 
-    internal fun isLeapYear(year: Int): Boolean = (year % 4 == 0 &&(year % 100 != 0 || year % 400 == 0))
+    internal fun isLeapYear(year: Int): Boolean = year % 4 == 0 && (year % 100 != 0 || year % 400 == 0)
 
 }
