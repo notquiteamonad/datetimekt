@@ -6,7 +6,7 @@ import com.github.samueldple.datetimekt.Consts.SECONDS_IN_A_DAY
 import com.github.samueldple.datetimekt.Consts.SECONDS_IN_A_MINUTE
 
 abstract class TimeType (
-        totalSeconds: Int,
+        totalSeconds: Long,
         wrap: Boolean
 ): Comparable<TimeType> {
 
@@ -18,11 +18,11 @@ abstract class TimeType (
         var currentTotalSeconds = totalSeconds
         while (currentTotalSeconds < 0) currentTotalSeconds += SECONDS_IN_A_DAY
         if (wrap) while (currentTotalSeconds >= SECONDS_IN_A_DAY) currentTotalSeconds -= SECONDS_IN_A_DAY
-        h = currentTotalSeconds / SECONDS_IN_AN_HOUR
+        h = (currentTotalSeconds / SECONDS_IN_AN_HOUR).toInt()
         currentTotalSeconds -= h * SECONDS_IN_AN_HOUR
-        m = currentTotalSeconds / SECONDS_IN_A_MINUTE
+        m = (currentTotalSeconds / SECONDS_IN_A_MINUTE).toInt()
         currentTotalSeconds -= m * SECONDS_IN_A_MINUTE
-        s = currentTotalSeconds
+        s = currentTotalSeconds.toInt()
     }
 
     fun getHours(): Int = h
