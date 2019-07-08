@@ -94,6 +94,15 @@ A `Time` can be instantiated by calling `Time.fromString()` with a string in the
 
 A second time type, `Duration` exists for cases where a duration should be stored in hours, minutes and seconds. This is similar to the `Time` class but allows hours to be greater than 24.
 
+You can get the duration between two `DateTime`s as follows:
+
+```kotlin
+// Gets duration between midnight on 1st Jan 2000 and now.
+val dt1 = DateTime.now()
+val dt2 = DateTime(Date(2000, 1, 1), Time(0, 0, 0))
+Duration.between(dt1, dt2) // Parameter order is irrelevant.
+```
+
 ### Dates
 
 Dates can be generated using the `Date` and `Month` classes. The `Month` class is similar to `Date` but doesn't include a day of the month.
