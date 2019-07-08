@@ -8,10 +8,17 @@ import java.util.regex.Pattern
  * Contains a duration in hours, minutes, and seconds.
  */
 class Duration constructor (
-        totalSeconds: Int
+        totalSeconds: Long
 ): TimeType(totalSeconds, false) {
 
-    constructor(h: Int, m: Int, s: Int): this(s + SECONDS_IN_A_MINUTE * m + SECONDS_IN_AN_HOUR * h)
+    constructor(h: Int, m: Int, s: Int): this(s.toLong() + (SECONDS_IN_A_MINUTE * m).toLong() + (SECONDS_IN_AN_HOUR * h).toLong())
+
+    @Deprecated(
+            "It is now recommended to use a Long instead to prevent overflows.",
+            ReplaceWith("Duration(totalSeconds.toLong())", "com.github.samueldple.datetimekt.Duration"),
+            DeprecationLevel.WARNING
+    )
+    constructor(totalSeconds: Int): this(totalSeconds.toLong())
 
     operator fun plus(other: TimeType): Duration = Duration(this.getHours() + other.getHours(), this.getMinutes() + other.getMinutes(), this.getSeconds() + other.getSeconds())
     operator fun minus(other: TimeType): Duration = Duration(this.getHours() - other.getHours(), this.getMinutes() - other.getMinutes(), this.getSeconds() - other.getSeconds())
@@ -37,6 +44,27 @@ class Duration constructor (
             } else {
                 null
             }
+        }
+
+        /**
+         * Gets the duration between 2 DateTimes.
+         */
+        @JvmStatic
+        fun between(dt1: DateTime, dt2: DateTime): Duration {
+            if (dt1 == dt2) return Duration(0)
+            val smaller: DateTime; val greater: DateTime
+            if (dt1 > dt2) {
+                smaller = dt2; greater = dt1
+            } else {
+                smaller = dt1; greater = dt2
+            }
+            val daysBetween = greater.getDate().toDays() - smaller.getDate().toDays()
+            val timeBetween = if (daysBetween == 0) {
+                greater.getTime().toDuration() - smaller.getTime().toDuration()
+            } else {
+                greater.getTime().toDuration() + (Duration(24, 0, 0) - smaller.getTime().toDuration())
+            }
+            return timeBetween + Duration(24 * (daysBetween - 1), 0, 0)
         }
 
     }

@@ -1,3 +1,5 @@
+import com.github.samueldple.datetimekt.Date
+import com.github.samueldple.datetimekt.DateTime
 import com.github.samueldple.datetimekt.Duration
 import com.github.samueldple.datetimekt.Time
 import io.kotlintest.data.forall
@@ -143,7 +145,40 @@ class TimeTests: StringSpec ({
         }
         assertAll { s: Int ->
             Time(s).toSeconds() >= 0
-            Duration(s).toSeconds() >= 0
+            Duration(s.toLong()).toSeconds() >= 0
+        }
+    }
+
+    "maximum duration between doesn't overflow" {
+        Duration.between(DateTime(Date(9999, 12, 31), Time(23, 59, 59)),
+                DateTime(Date(0, 1, 1), Time(0))).toSeconds()
+    }
+
+    "durations between" {
+        forall(
+                row(
+                        Duration(0),
+                        Date(2000, 1, 1),
+                        Time(6, 0, 0),
+                        Date(2000, 1, 1),
+                        Time(6, 0, 0)
+                ),
+                row(
+                        Duration(9, 0, 0),
+                        Date(2000, 1, 1),
+                        Time(21, 0, 0),
+                        Date(2000, 1, 2),
+                        Time(6, 0, 0)
+                ),
+                row(
+                        Duration(9, 0, 0),
+                        Date(2000, 1, 1),
+                        Time(12, 0, 0),
+                        Date(2000, 1, 1),
+                        Time(21, 0, 0)
+                )
+        ) { dur, d1, t1, d2, t2 ->
+            Duration.between(DateTime(d1, t1), DateTime(d2, t2)) shouldBe dur
         }
     }
 
