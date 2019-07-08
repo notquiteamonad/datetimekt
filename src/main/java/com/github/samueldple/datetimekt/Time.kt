@@ -10,7 +10,7 @@ import java.util.regex.Pattern
  */
 class Time constructor (
         totalSeconds: Int
-): TimeType(totalSeconds, true) {
+): TimeType(totalSeconds.toLong(), true) {
 
     constructor(h: Int, m: Int, s: Int): this(s + SECONDS_IN_A_MINUTE * m + SECONDS_IN_AN_HOUR * h)
 
