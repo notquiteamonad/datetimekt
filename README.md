@@ -1,7 +1,7 @@
 # datetimekt: High-Level Date and Time for Kotlin
 
 [![License][apache-image]][apache]
-[![datetimekt on Travis CI][travis-image]][travis]
+[![Build Status][github-actions-image]][github-actions]
 [![FOSSA Status][fossa-image]][fossa]
 [![datetimekt on Jitpack][jitpack-image]][jitpack]
 
@@ -10,9 +10,9 @@
 [![Quality Gate Status][sonarcloud-image]][sonarcloud]
 [![CodeFactor][codefactor-image]][codefactor]
 
-[travis-image]: https://travis-ci.org/samueldple/datetimekt.svg?branch=master
+[github-actions-image]: https://img.shields.io/endpoint.svg?url=https%3A%2F%2Factions-badge.atrox.dev%2Fsamueldple%2Fdatetimekt%2Fbadge&style=flat
 
-[travis]: https://travis-ci.org/samueldple/datetimekt
+[github-actions]: https://actions-badge.atrox.dev/samueldple/datetimekt/goto
 
 [apache-image]: https://img.shields.io/badge/License-Apache%202.0-blue.svg
 
@@ -34,7 +34,7 @@
 
 [sonarcloud]: https://sonarcloud.io/dashboard?id=samueldple%3Adatetimekt
 
-[sonarcloud-image]: https://sonarcloud.io/api/project_badges/measure?project=samueldple%3Adatetimekt&metric=alert_status
+[sonarcloud-image]: https://sonarcloud.io/api/project_badges/measure?project=samueldple_datetimekt&metric=alert_status
 
 [codefactor]: https://www.codefactor.io/repository/github/samueldple/datetimekt
 
