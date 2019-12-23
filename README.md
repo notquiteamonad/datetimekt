@@ -94,6 +94,13 @@ A `Time` can be instantiated by calling `Time.fromString()` with a string in the
 
 A second time type, `Duration` exists for cases where a duration should be stored in hours, minutes and seconds. This is similar to the `Time` class but allows hours to be greater than 24.
 
+It also has a `toDays()` method for getting the number of days in it, ignoring hours, minutes, and seconds. For example:
+
+```kotlin
+val d = Duration(52, 1, 5)
+d.toDays() // --> 2
+```
+
 You can get the duration between two `DateTime`s as follows:
 
 ```kotlin
