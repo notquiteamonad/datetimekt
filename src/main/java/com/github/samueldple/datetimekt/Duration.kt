@@ -23,6 +23,12 @@ class Duration constructor (
     operator fun plus(other: TimeType): Duration = Duration(this.getHours() + other.getHours(), this.getMinutes() + other.getMinutes(), this.getSeconds() + other.getSeconds())
     operator fun minus(other: TimeType): Duration = Duration(this.getHours() - other.getHours(), this.getMinutes() - other.getMinutes(), this.getSeconds() - other.getSeconds())
 
+    /**
+     * Gets the number of days in this duration, ignoring
+     * hours, minutes, and seconds.
+     */
+    fun toDays(): Int = this.getHours() / 24
+
     companion object {
 
         private const val STRING_FORMAT_REGEX = """^\d+:\d{2}:\d{2}$"""
@@ -51,7 +57,7 @@ class Duration constructor (
          */
         @JvmStatic
         fun between(dt1: DateTime, dt2: DateTime): Duration {
-            if (dt1 == dt2) return Duration(0)
+            if (dt1 == dt2) return Duration(0L)
             val smaller: DateTime; val greater: DateTime
             if (dt1 > dt2) {
                 smaller = dt2; greater = dt1

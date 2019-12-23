@@ -3,6 +3,7 @@ import com.github.samueldple.datetimekt.DateTime
 import com.github.samueldple.datetimekt.Duration
 import com.github.samueldple.datetimekt.Time
 import io.kotlintest.data.forall
+import io.kotlintest.matchers.numerics.shouldBeLessThanOrEqual
 import io.kotlintest.properties.assertAll
 import io.kotlintest.shouldBe
 import io.kotlintest.specs.StringSpec
@@ -100,7 +101,7 @@ class TimeTests: StringSpec ({
     }
 
     "durations" {
-        var duration = Duration(86401)
+        var duration = Duration(86401L)
         duration.getHours() shouldBe 24
         duration.getMinutes() shouldBe 0
         duration.getSeconds() shouldBe 1
@@ -157,7 +158,7 @@ class TimeTests: StringSpec ({
     "durations between" {
         forall(
                 row(
-                        Duration(0),
+                        Duration(0L),
                         Date(2000, 1, 1),
                         Time(6, 0, 0),
                         Date(2000, 1, 1),
@@ -180,6 +181,21 @@ class TimeTests: StringSpec ({
         ) { dur, d1, t1, d2, t2 ->
             Duration.between(DateTime(d1, t1), DateTime(d2, t2)) shouldBe dur
         }
+    }
+
+    "durations toDays" {
+        forall(
+                row(Duration(0, 1, 1), 0),
+                row(Duration(24, 0, 0), 1),
+                row(Duration(25, 0, 0), 1),
+                row(Duration(52, 1, 5), 2)
+        ) { duration, expectedDays ->
+            duration.toDays() shouldBe expectedDays
+        }
+    }
+
+    "duration toDays can't overflow" {
+        Duration(Long.MAX_VALUE).toDays() shouldBeLessThanOrEqual Int.MAX_VALUE
     }
 
 })
