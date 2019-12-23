@@ -1,5 +1,9 @@
 # Changelog
 
+## Version 1.2.0
+
+-   `Duration` now has a `toDays()` method for getting the number of days within it, ignoring hours, minutes, and seconds.
+
 ## Version 1.1.0
 
 -   `Duration`'s internal number of seconds is now `Long` to account for durations of up to the maximum date
