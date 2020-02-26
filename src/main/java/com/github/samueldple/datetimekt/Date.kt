@@ -1,5 +1,8 @@
 package com.github.samueldple.datetimekt
 
+import com.github.samueldple.datetimekt.Consts.DAYS_IN_10_YEARS
+import com.github.samueldple.datetimekt.Consts.SECONDS_IN_A_DAY
+import com.github.samueldple.datetimekt.Consts.UNIX_EPOCH_IN_DAYS
 import com.github.samueldple.datetimekt.Utils.getLastDateInMonth
 import com.github.samueldple.datetimekt.Utils.isLeapYear
 import java.time.LocalDate
@@ -80,7 +83,7 @@ class Date(
             }
 
     /**
-     * Gets the number of days since 1 Jan 0000 (including that date and this one)
+     * Gets the number of days since 1 Jan 0000 (including that date and this one).
      */
     fun toDays(): Int {
         var totalDays = 0
@@ -95,6 +98,21 @@ class Date(
     }
 
     fun toMonth(): Month = Month.fromDate(this)
+
+    /**
+     * Gets the number of seconds which this date represents after the UNIX Epoch
+     * (1970-01-01T00:00:00Z).
+     * 
+     * Returns null if this date was before the UNIX Epoch.
+     */
+    fun toPosixSeconds(): Long? {
+        val totalDays = toDays().toLong()
+        if (totalDays < UNIX_EPOCH_IN_DAYS) {
+            return null
+        }
+        val daysSinceEpoch = totalDays - UNIX_EPOCH_IN_DAYS
+        return daysSinceEpoch * SECONDS_IN_A_DAY
+    }
 
     companion object {
 
@@ -127,8 +145,14 @@ class Date(
             }
         }
 
+        /**
+         * Inverse of Date.toDays().
+         *
+         * Returns null if the number is negative or the date is greater than
+         * the max date.
+         */
         fun fromDays(totalNumberOfDays: Int): Date? {
-            if (totalNumberOfDays < 1) {
+            if (totalNumberOfDays < 1 || totalNumberOfDays > DAYS_IN_10_YEARS) {
                 return null
             }
             var totalDays = totalNumberOfDays
@@ -143,6 +167,20 @@ class Date(
                 months++
             }
             return Date(years, months, totalDays)
+        }
+
+        /**
+         * Converts a number of seconds since the UNIX Epoch
+         * (1970-01-01T00:00:00Z) into a date.
+         *
+         * Returns null if the number is negative or the date is greater than
+         * the max date.
+         */
+        fun fromPosixSeconds(secondsSinceEpoch: Long): Date? {
+            if (secondsSinceEpoch < 0) {
+                return null
+            }
+            return fromDays(UNIX_EPOCH_IN_DAYS + (secondsSinceEpoch / SECONDS_IN_A_DAY).toInt())
         }
 
     }
