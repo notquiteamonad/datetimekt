@@ -64,4 +64,14 @@ class DateTimeTests: StringSpec ({
         DateTime.fromString("2-a11111@05:a:04") shouldBe null
     }
 
+    "to posix seconds" {
+        DateTime(Date(2000, 2, 29), Time(0, 0, 0)).toPosixSeconds() shouldBe 951782400
+        DateTime(Date(2000, 2, 29), Time(1, 1, 1)).toPosixSeconds() shouldBe 951786061
+    }
+
+    "from posix seconds" {
+        DateTime.fromPosixSeconds(951782400) shouldBe DateTime(Date(2000, 2, 29), Time(0, 0, 0))
+        DateTime.fromPosixSeconds(951786061) shouldBe DateTime(Date(2000, 2, 29), Time(1, 1, 1))
+    }
+
 })

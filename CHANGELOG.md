@@ -1,5 +1,10 @@
 # Changelog
 
+## Unreleased Changes
+
+-   Added `toPosixSeconds()` method and `fromPosixSeconds()` function onto `Date` and `DateTime`.
+-   Fix: `Date.fromDays()` now returns `null` if the number of days is greater than those in the maximum date. It previously returned a date in the year 9999 depending on the number additional days above the maximum.
+
 ## Version 1.2.0
 
 -   `Duration` now has a `toDays()` method for getting the number of days within it, ignoring hours, minutes, and seconds.

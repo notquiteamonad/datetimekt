@@ -101,6 +101,7 @@ class DateTests: StringSpec ({
 
     "from posix seconds" {
         Date.fromPosixSeconds(951782400) shouldBe Date(2000, 2, 29)
+        Date.fromPosixSeconds(951782500) shouldBe Date(2000, 2, 29)
         Date.fromPosixSeconds(0) shouldBe Date(1970,1,1)
         Date.fromPosixSeconds(-1) shouldBe null
         Date.fromPosixSeconds(Long.MAX_VALUE) shouldBe null
