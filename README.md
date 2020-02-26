@@ -1,4 +1,4 @@
-# datetimekt: High-Level Date and Time for Kotlin
+# datetimekt: High-Level POSIX-Compatible Date and Time for Kotlin
 
 [![License][apache-image]][apache]
 [![Build Status][github-actions-image]][github-actions]
@@ -44,7 +44,7 @@ datetimekt is a high-level Kotlin library for use in situations where
 precision beyond seconds is not necessary.
 
 It handles serialisable dates and times from 01 Jan 0000 at 00:00:00 to
-Dec 31 9999 at 23:59:59.
+Dec 31 9999 at 23:59:59 and can convert between these and their POSIX equivalents.
 
 **Note:** This README may contain documentation of features which have not been released yet. To ensure
 it is accurate for a specific version, use the tag selector and select the version you're using.
@@ -190,12 +190,18 @@ For 23rd January 2002 at 08:30:30 AM, the former will produce `"2002-01-23@08:30
 
 A `DateTime` can be instantiated by calling `DateTime.fromString()` with a string in the format of `yyyy-mm-dd@hh:mm:ss`. The "@" character can optionally be replaced with a space. An invalid string will result in `null` being returned.
 
+## Compatibility with POSIX Time
+
+`Date` and `DateTime` types can be converted to and from POSIX seconds since the UNIX Epoch
+using their `toPosixSeconds()` and `fromPosixSeconds()` functions.
+
 ## Comparison with the Rust library
 
 -   The default names of the types in the Rust library are suffixed with "Tuple".
 -   The Rust library provides richer mutation functions for the `Date` and `Month` types.
 -   The Rust library does not support the "@" in a `DateTime` string being replaced with a space.
 -   The Rust library returns error types instead of correcting when invalid values are passed into constructors.
+-   This library offers conversions between its times and POSIX time.
 
 ## Limitations
 
