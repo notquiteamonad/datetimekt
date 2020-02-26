@@ -102,7 +102,7 @@ class Date(
     /**
      * Gets the number of seconds which this date represents after the UNIX Epoch
      * (1970-01-01T00:00:00Z).
-     * 
+     *
      * Returns null if this date was before the UNIX Epoch.
      */
     fun toPosixSeconds(): Long? {
