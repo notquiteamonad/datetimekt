@@ -11,4 +11,8 @@ internal object Consts {
     internal const val MONTHS_IN_A_YEAR = 12
     internal const val MAX_YEAR = 9999
 
+    internal const val DAYS_IN_10_YEARS = 3652500
+
+    internal const val UNIX_EPOCH_IN_DAYS = 719529
+
 }
