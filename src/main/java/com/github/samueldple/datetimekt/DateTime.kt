@@ -1,5 +1,6 @@
 package com.github.samueldple.datetimekt
 
+import com.github.samueldple.datetimekt.Consts.SECONDS_IN_A_DAY
 import java.util.regex.Pattern
 
 class DateTime(
@@ -28,6 +29,14 @@ class DateTime(
     override fun toString(): String = "$d@$t"
 
     fun toReadableString(): String = "${d.toReadableString()} $t"
+
+    /**
+     * Convenience function for adding the date's POSIX seconds to those of the time.
+     *
+     * Derives nullability from Date.toPosixSeconds().
+     */
+    fun toPosixSeconds(): Long? =
+            d.toPosixSeconds()?.let { it + t.toSeconds() }
 
     override fun compareTo(other: DateTime): Int =
             if (d == other.d) {
@@ -61,6 +70,17 @@ class DateTime(
                 null
             }
         }
+
+        /**
+         * Gets a DateTime from a number of seconds since the UNIX Epoch
+         * (1970-01-01T00:00:00Z).
+         *
+         * Derives nullability from Date.fromPosixSeconds().
+         */
+        fun fromPosixSeconds(secondsSinceEpoch: Long): DateTime? =
+                Date.fromPosixSeconds(secondsSinceEpoch)?.let {
+                    DateTime(it, Time((secondsSinceEpoch % SECONDS_IN_A_DAY).toInt()))
+                }
 
     }
 
