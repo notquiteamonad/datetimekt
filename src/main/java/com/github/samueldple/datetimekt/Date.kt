@@ -5,7 +5,7 @@ import com.github.samueldple.datetimekt.Consts.SECONDS_IN_A_DAY
 import com.github.samueldple.datetimekt.Consts.UNIX_EPOCH_IN_DAYS
 import com.github.samueldple.datetimekt.Utils.getLastDateInMonth
 import com.github.samueldple.datetimekt.Utils.isLeapYear
-import java.time.LocalDate
+import java.util.*
 import java.util.regex.Pattern
 
 /**
@@ -124,8 +124,8 @@ class Date(
         @JvmStatic
         @Suppress("unused")
         fun today(): Date {
-            val date = LocalDate.now()
-            return Date(date.year, date.monthValue, date.dayOfMonth)
+            val date = Calendar.getInstance()
+            return Date(date.get(Calendar.YEAR), date.get(Calendar.MONTH) + 1, date.get(Calendar.DAY_OF_MONTH))
         }
 
         /**
