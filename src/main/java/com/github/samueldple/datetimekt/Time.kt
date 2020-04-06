@@ -2,7 +2,7 @@ package com.github.samueldple.datetimekt
 
 import com.github.samueldple.datetimekt.Consts.SECONDS_IN_AN_HOUR
 import com.github.samueldple.datetimekt.Consts.SECONDS_IN_A_MINUTE
-import java.time.LocalTime
+import java.util.*
 import java.util.regex.Pattern
 
 /**
@@ -44,8 +44,8 @@ class Time constructor (
         @JvmStatic
         @Suppress("unused")
         fun now(): Time {
-            val currentTime = LocalTime.now()
-            return Time(currentTime.hour, currentTime.minute, currentTime.second)
+            val currentTime = Calendar.getInstance()
+            return Time(currentTime.get(Calendar.HOUR_OF_DAY), currentTime.get(Calendar.MINUTE), currentTime.get(Calendar.SECOND))
         }
 
     }

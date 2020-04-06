@@ -2,7 +2,7 @@ package com.github.samueldple.datetimekt
 
 import com.github.samueldple.datetimekt.Consts.MAX_YEAR
 import com.github.samueldple.datetimekt.Consts.MONTHS_IN_A_YEAR
-import java.time.LocalDate
+import java.util.*
 import java.util.regex.Pattern
 
 /**
@@ -123,8 +123,8 @@ class Month(
         @JvmStatic
         @Suppress("unused")
         fun thisMonth(): Month {
-            val date = LocalDate.now()
-            return Month(date.year, date.monthValue)
+            val date = Calendar.getInstance()
+            return Month(date.get(Calendar.YEAR), date.get(Calendar.MONTH) + 1)
         }
 
         /**
