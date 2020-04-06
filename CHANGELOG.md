@@ -1,5 +1,9 @@
 # Changelog
 
+## Version 1.3.1
+
+-   Changed implementation of `Date.today()`, `Month.thisMonth()`, `Time.now()` (and consequently `DateTime.now()`) to support java versions < 1.8.
+
 ## Version 1.3.0
 
 -   Added `toPosixSeconds()` method and `fromPosixSeconds()` function onto `Date` and `DateTime`.
