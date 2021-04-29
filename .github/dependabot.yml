@@ -1,0 +1,29 @@
+version: 2
+updates:
+- package-ecosystem: maven
+  directory: "/"
+  schedule:
+    interval: daily
+  open-pull-requests-limit: 99
+  reviewers:
+  - samueldple
+  assignees:
+  - samueldple
+  labels:
+  - dependencies
+  ignore:
+  - dependency-name: org.jetbrains.kotlin:kotlin-maven-plugin
+    versions:
+    - 1.4.30
+    - 1.4.31
+    - 1.4.32
+  - dependency-name: org.jetbrains.kotlin:kotlin-test
+    versions:
+    - 1.4.30
+    - 1.4.31
+    - 1.4.32
+  - dependency-name: org.jetbrains.kotlin:kotlin-stdlib-jdk8
+    versions:
+    - 1.4.30
+    - 1.4.31
+    - 1.4.32
