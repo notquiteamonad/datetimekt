@@ -40,6 +40,13 @@
 
 [codefactor-image]: https://www.codefactor.io/repository/github/samueldple/datetimekt/badge
 
+## DEPRECATION
+
+datetimekt is now deprecated and won't receive further support.
+I'd encourage you to check out other options.
+
+<details><summary>Rest of the README content</summary>
+
 datetimekt is a high-level Kotlin library for use in situations where
 precision beyond seconds is not necessary.
 
@@ -212,3 +219,5 @@ For a more feature-rich wrapper of dates, you may wish to use Java LocalDate.
 -   This library is only designed for use when dates need only to be precise to the level of seconds.
 -   This library is timezone-agnostic; it doesn't deal with any difference between time zones.
 -   Only datetimes between `01 Jan 0000 00:00:00` and `31 Dec 9999 23:59:59` are supported.
+
+</details>
